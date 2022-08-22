@@ -12,6 +12,7 @@ public class RadioTest {
         int actual = radio.currentStation;
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void prevStation() {
         Radio radio = new Radio();
@@ -61,6 +62,7 @@ public class RadioTest {
         int actual = radio.currentVolume;
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void minVolume() {
         Radio radio = new Radio();

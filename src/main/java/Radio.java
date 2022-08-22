@@ -3,7 +3,6 @@ public class Radio {
     public int currentStation;
     public int currentVolume;
 
-
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < 0 || newCurrentStation > 9) {
             return;
