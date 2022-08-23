@@ -1,5 +1,8 @@
-package ru.netology.javaqa;
+
 public class Radio {
+    private int maxCurrentVolume = 10;
+    private int maxCurrentStation = 9;
+    private int minCurrentVolume = 0;
     private int currentStation;
     private int currentVolume;
 
@@ -7,35 +10,53 @@ public class Radio {
         return currentStation;
     }
 
+
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation < 0 || currentStation > 9) {
+        if (currentStation < 0) {
+            this.currentStation = minCurrentVolume;
             return;
+        } else if (currentStation > 9) {
+            this.currentStation = maxCurrentStation;
+            return;
+        } else {
+            this.currentStation = currentStation;
         }
-        this.currentStation = currentStation;
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < 0 || currentVolume > 10) {
+        if (currentVolume < 0) {
+            this.currentVolume = minCurrentVolume;
             return;
+        } else if (currentVolume > 10) {
+            this.currentVolume = maxCurrentVolume;
+            return;
+        } else {
+            this.currentVolume = currentVolume;
         }
-        this.currentVolume = currentVolume;
     }
+
 
 
     public void next() {
         if (currentStation == 9) {
             currentStation = 0;
-        } else currentStation++;
+
+        } else {
+            currentStation++;
+        }
     }
 
     public void prev() {
         if (currentStation == 0) {
             currentStation = 9;
-        } else currentStation--;
+        }
+        else {
+            currentStation--;
+        }
     }
 
     public void decreaseVolume() {
