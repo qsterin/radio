@@ -30,7 +30,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentStation(-1);
         radio.next();
-        int expected = 1;
+        int expected = 0;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
 
