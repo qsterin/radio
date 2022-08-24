@@ -1,10 +1,16 @@
 
 public class Radio {
-    private int maxCurrentVolume = 10;
-    private int maxCurrentStation = 9;
-    private int minCurrentVolume = 0;
     private int currentStation;
     private int currentVolume;
+    private int numberOfStations;
+
+    public Radio() {
+        numberOfStations = 10;
+    }
+
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -17,11 +23,9 @@ public class Radio {
 
     public void setCurrentStation(int currentStation) {
         if (currentStation < 0) {
-            this.currentStation = minCurrentVolume;
-            return;
-        } else if (currentStation > 9) {
-            this.currentStation = maxCurrentStation;
-            return;
+            this.currentStation = 0;
+        } else if (currentStation > numberOfStations - 1) {
+            this.currentStation = numberOfStations;
         } else {
             this.currentStation = currentStation;
         }
@@ -29,22 +33,19 @@ public class Radio {
 
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume < 0) {
-            this.currentVolume = minCurrentVolume;
+            this.currentVolume = 0;
             return;
-        } else if (currentVolume > 10) {
-            this.currentVolume = maxCurrentVolume;
+        } else if (currentVolume > 100) {
+            this.currentVolume = 100;
             return;
         } else {
             this.currentVolume = currentVolume;
         }
     }
 
-
-
     public void next() {
-        if (currentStation == 9) {
-            currentStation = 0;
-
+        if (currentStation == numberOfStations) {
+            currentStation = numberOfStations;
         } else {
             currentStation++;
         }
@@ -52,9 +53,8 @@ public class Radio {
 
     public void prev() {
         if (currentStation == 0) {
-            currentStation = 9;
-        }
-        else {
+            currentStation = (numberOfStations - 1);
+        } else {
             currentStation--;
         }
     }
@@ -66,8 +66,10 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume++;
+        } else {
+            this.currentVolume = 100;
         }
     }
 
